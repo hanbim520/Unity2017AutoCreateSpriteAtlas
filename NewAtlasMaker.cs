@@ -75,24 +75,7 @@ namespace Tools
                 Debug.Log(sptAtlas.tag);
                 AddPackAtlas(sptAtlas, spts.ToArray());
             }
-            //add folders
-            List<Object> folders = new List<Object>();
-            foreach (DirectoryInfo dirInfo in rootDirInfo.GetDirectories())
-            {
-                folders.Clear();
-                if (dirInfo != null)
-                {
-                    string assetPath = dirInfo.FullName.Substring(dirInfo.FullName.IndexOf("Assets"));
-                    var o = AssetDatabase.LoadAssetAtPath<DefaultAsset>(assetPath);
-                    if (IsPackable(o))
-                        folders.Add(o);
-                }
-                string atlasName = dirInfo.Name + ".spriteatlas";
-                CreateAtlas(atlasName);
-                SpriteAtlas sptAtlas = Resources.Load<SpriteAtlas>(dirInfo.Name);
-                Debug.Log(sptAtlas.tag);
-                AddPackAtlas(sptAtlas, folders.ToArray());
-            }
+            
 
             //add texture by your self
         }
